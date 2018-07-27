@@ -1,0 +1,667 @@
+﻿/**
+ * Theme.css
+ *
+ * This Cascading Stylesheet includes styles that override the ASNA Mobile RPG
+ * framework defaults.
+ *
+ * Feel free to customize your site's styles by changing the contents of this file.
+ *
+ * If overriding the framework defaults is not enough to produce your own branding,
+ * follow the instructions in the header comment of Framework.css, found in the same 
+ * folder as this file, to radically change the Styles of your ASNA Mobile RPG website.
+ *
+ * To improve performance, you may want to use the "Minified" version of this Cascading 
+ * Stylesheet by getting the SASS source file structure from: https://github.com/ASNA/MobileRPG-Sass,
+ * that will allow you to generate the Theme.min.css which you can link from your 
+ * MasterPage.master file, replacing the reference to Theme.css.
+ *
+*/
+/*  Set the default font (family and size) for all elements in the page.
+    On the body, set margins on both sides to avoid text too close to edges.
+    ========================================================================== */
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+input[type=text], input[type=password], input[type=date] {
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 30px;
+  position: relative;
+  left: 0;
+  outline: none;
+  font-size: 14px;
+  -webkit-appearance: none;
+  border-radius: 0;
+    top: 0px;
+}
+
+button[type=button] {
+  -webkit-appearance: none;
+  font-size: 14px;
+  border-radius: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+input[type=range] {
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+  /*fix for FF unable to apply focus style bug */
+  border: 1px solid white;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+  height: 5px;
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+  /*remove default tick marks*/
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+
+/* ==========================================================================
+   Calendar for ddsDateTime
+   ========================================================================== */
+.CalendarTable {
+  font-family: "Lucida Sans Typewriter", monospace;
+  font-size: 8px;
+  background-color: #86aed7;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 4px 4px 4px 4px;
+  border-spacing: 0;
+  color: black;
+}
+
+.CalendarNavRow {
+  background-color: #fdfdfd;
+}
+
+.CalendarCloseCell, .CalendarPrevYear, .CalendarPrevMonth, .CalendarNextMonth, .CalendarNextYear, .CalendarDateCell, .CalendarSelDateCell, .CalendarWeekDayCell, .CalendarNavRow, .CalendarExDateCell {
+  font-size: 11px;
+}
+
+.CalendarTable tbody td:hover {
+  background: #f4f6f9;
+  border-radius: 50%;
+}
+
+/* top-left border-radius */
+table.CalendarTable tr:first-child th:first-child,
+table.CalendarTable tr:first-child td:first-child {
+  border-top-left-radius: 4px;
+}
+
+/* top-right border-radius */
+table.CalendarTable tr:first-child th:last-child,
+table.CalendarTable tr:first-child td:last-child {
+  border-top-right-radius: 4px;
+}
+
+/* bottom-left border-radius */
+table.CalendarTable tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+
+/* bottom-right border-radius */
+table.CalendarTable tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+.CalendarDateCell {
+  color: black;
+  background-color: #86aed7;
+}
+
+.CalendarTitle {
+  font-size: 13px;
+  color: #3366CC;
+  text-transform: capitalize;
+}
+
+.CalendarSelDateCell {
+  border-radius: 50%;
+  color: #003366;
+  background-color: #ffff66;
+}
+
+.CalendarWeekDayCell {
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: capitalize;
+  color: white;
+  background-color: #3366cc;
+}
+
+.CalendarExDateCell {
+  color: black;
+  background-color: #cdcdcd;
+}
+
+.CalendarPrevMonth {
+  background-image: url("../Images/calendar_prev_month.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  /* To hide the '<<' text */
+}
+
+.CalendarNextMonth {
+  background-image: url("../Images/calendar_next_month.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  /* To hide the '>' text */
+}
+
+.CalendarPrevYear {
+  background-image: url("../Images/calendar_prev_year.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  /* To hide the '<<<' text */
+}
+
+.CalendarNextYear {
+  background-image: url("../Images/calendar_next_year.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  /* To hide the '>>' text */
+}
+
+/* ==========================================================================
+   ddsBar
+   ========================================================================== */
+.DdsBar {
+  background-color: maroon;
+}
+
+.NavButton {
+  border: 1px solid #ed6c45;
+  font-family: inherit;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: white;
+  background-color: orangered;
+  border-radius: 3px;
+}
+
+.NavButtonIcon {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+
+.SubmitButton {
+  border: 1px solid gray;
+  color: gray;
+  background-color: white;
+}
+
+/* ==========================================================================
+   ddsCharField
+   ========================================================================== */
+.DdsCharField, .DdsCharField_Error, .DdsCharField_Right_Error {
+  border-color: #c0c0c0;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsCharField_Error, .DdsCharField_Right_Error {
+  color: white;
+  background-color: #c00;
+}
+
+.DdsCharField_Right_Error {
+  text-align: right;
+}
+
+/* ==========================================================================
+   ddsChart
+   ========================================================================== */
+.DdsChartPanel {
+  border-color: black;
+}
+
+/* ==========================================================================
+   ddsConstant
+   ========================================================================== */
+.DdsConstant {
+  padding: 0;
+}
+
+/* ==========================================================================
+   ddsDateField
+   ========================================================================== */
+.DdsDateField, .DdsDateField_Error, .DdsDateField_Right_Error {
+  border-color: #c0c0c0;
+}
+
+.DdsDateField_Error, .DdsDateField_Right_Error {
+  color: white;
+  background-color: #c00;
+}
+
+.DdsDateField_Right_Error {
+  text-align: right;
+}
+
+.DdsDateFieldButton {
+  background-color: white;
+  border: 1px solid lightgray;
+  color: darkgray;
+}
+
+/* ==========================================================================
+   ddsDecDateField
+   ========================================================================== */
+.DdsDecDateField, .DdsDecDateField_Error {
+  border-color: #c0c0c0;
+  padding: 0;
+}
+
+.DdsDecDateField_Error {
+  color: white;
+  background-color: #c00;
+}
+
+/* ==========================================================================
+   ddsDecField
+   ========================================================================== */
+.DdsDecField, .DdsDecField_Error, .DdsDecField_OutputOnly {
+  border-color: #c0c0c0;
+}
+
+.DdsDecField_Error {
+  color: white;
+  background-color: #c00;
+}
+
+/* ==========================================================================
+   ddsImage
+   ========================================================================== */
+.DdsImageChoose {
+  height: 2.5em;
+  font-size: 0.8em;
+}
+
+.DdsImageUpload {
+  height: 2.5em;
+  color: darkgreen;
+  border-color: #b4df5b;
+  border-radius: 3px;
+}
+
+.DdsImageUpload:disabled {
+  border-radius: 3px;
+  border-color: gray;
+  color: gray;
+  background-image: none;
+  background-color: white;
+  float: right;
+}
+
+.DdsImage .DdsImageSwipeShowNavBars {
+  background-color: gray;
+  opacity: 0.75;
+}
+
+.DdsImage div[data-ddsImage-tag] {
+  background-color: black;
+  color: white;
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+.DdsImageFullScreen {
+  background-color: black;
+}
+
+.DdsImageFullScreen .DdsImageSwipeShowNavBars {
+  background-color: black;
+}
+
+.DdsImageFullScreen div[data-ddsImage-tag] {
+  background-color: black;
+  color: white;
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   ddsList
+   ========================================================================== */
+.DdsList {
+  font-weight: bold;
+    top: 0px;
+    height: 21px;
+    width: 277px;
+}
+
+.DdsListList {
+  background-color: white;
+}
+
+.DdsListRow {
+  border-bottom: 1px solid lightgray;
+}
+
+.DdsListDetail {
+  font-weight: normal;
+}
+
+.DdsListImage {
+  width: 64px;
+  height: 64px;
+  background-image: url("../Images/SubmitWait.gif");
+  background-repeat: no-repeat;
+}
+
+.DdsListIcon {
+  fill: lightgray;
+  width: 40px;
+  height: 40px;
+}
+
+.DdsListChevron {
+  fill: lightgray;
+  width: 32px;
+  height: 32px;
+}
+
+/* ==========================================================================
+   ddsPanel
+   ========================================================================== */
+.DdsPanel {
+  border-radius: 3px;
+  border-color: gray;
+  background-color: white;
+}
+
+.PanelTitle, .PanelTitle_OutputOnly {
+  font-size: 1em;
+  color: white;
+}
+
+/* ==========================================================================
+   ddsSignature
+   ========================================================================== */
+.DdsSignature {
+  border-color: #c0c0c0;
+  border-radius: 3px;
+}
+
+.DdsSignEditor, .DdsSignEditorTitle {
+  color: white;
+  background-color: #48474f;
+}
+
+.DdsSignEditorTitle {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.DdsSignCancelButton, .DdsSignDoneButton, .DdsSignEraseButton {
+  font-size: 0.8em;
+  color: white;
+  background-color: #48474F;
+}
+
+.DdsSignCancelButton {
+  color: orangered;
+}
+
+.DdsSignDoneButton {
+  font-weight: bold;
+  color: yellow;
+}
+
+/* ==========================================================================
+   ddsSwitch
+   ========================================================================== */
+.ToggleSwitchLabelFocus {
+  text-shadow: 2px 2px 2px #969696;
+}
+
+.ToggleSwitch {
+  border-color: #444;
+  border-radius: 1.1em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ToggleSwitch-wrapper > * {
+  box-shadow: inset 0 0.2em 0.4em rgba(0, 0, 0, 0.75);
+}
+
+.ToggleSwitch > .ToggleSwitch-wrapper {
+  color: #fff;
+  text-shadow: 0 -0.1em 0 rgba(0, 0, 0, 0.8);
+  border-radius: 1em;
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-on {
+  background: #0b0;
+  border-radius: 0.8em 0 0 0.8em;
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-off {
+  background: #b00;
+  border-radius: 0 0.8em 0.8em 0;
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-handle {
+  background-color: #aaa;
+  background-image: linear-gradient(top, #eee, #aaa);
+  box-shadow: 0 0.15em 0.4em #000;
+  border-color: #999;
+  border-radius: 0.99em;
+}
+
+.ToggleSwitchRenderAsCheckbox {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================================
+   ddsTable
+   ========================================================================== */
+.DdsTable {
+  font: normal 12px/150% "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  background: #F3F3F6;
+  border: 1px solid #800000;
+  width: 100%;
+  border-radius: 3px;
+  border-collapse: collapse;
+}
+
+.DdsTableHeading {
+  border-left: 1px solid #800000;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #cc0000;
+  background-image: linear-gradient(top, #800000, #cc0000);
+  color: white;
+}
+
+.DdsTableIconColumn,
+.DdsTableIconColumnHeading {
+  text-align: center;
+}
+
+.DdsTableCharColumn,
+.DdsTableCharColumnHeading {
+  text-align: left;
+}
+
+.DdsTableBinaryColumn,
+.DdsTableBinaryColumnHeading,
+.DdsTablePackedColumn,
+.DdsTablePackedColumnHeading,
+.DdsTableZonedColumn,
+.DdsTableZonedColumnHeading {
+  text-align: right;
+}
+
+.DdsTableGroupHeading {
+  border-left: 1px solid;
+  border-left-color: #a70000;
+  background-color: #cc0000;
+  background-image: linear-gradient(top, #800000, #cc0000);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.DdsTableSelectedRow {
+  background-color: #ffa8a8;
+  color: black;
+}
+
+.DdsTableHoverRow {
+  background-color: #ddd;
+  color: black;
+}
+
+.DdsTableSelectedCell {
+  border: 1px solid blue;
+}
+
+.DdsTableErrorCell {
+  border: 1px solid red;
+}
+
+.DdsTableDialogError {
+  color: red;
+}
+
+.DdsTableEditableCell {
+  background-color: white;
+}
+
+.DdsTableErrorRow {
+  background-color: lightpink;
+  color: red;
+}
+
+/* ==========================================================================
+   ddsTimeField
+   ========================================================================== */
+.DdsTimeField, .DdsTimeField_Error {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsTimeField_Error {
+  color: white;
+  background-color: #c00;
+}
+
+/* ==========================================================================
+   ddsTimestampField
+   ========================================================================== */
+.DdsTimestampField_Error {
+  color: white;
+  background-color: #c00;
+}
+
+/* ==========================================================================
+   DDS Window Records
+   ========================================================================== */
+.DdsInlinePopUpBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+}
+
+.DdsInlinePopUpTitle {
+  color: white;
+  background-color: #333;
+}

@@ -1,0 +1,13 @@
+        Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
+                ActGrp('rpmobile');
+
+        EXEC SQL
+            SET OPTION NAMING = *SYS,
+            COMMIT = *NONE;
+
+        Exec SQL
+            DECLARE C1 CURSOR FOR
+            Select state, abbrev from examples/states
+            order by states;
+
+        Return;            

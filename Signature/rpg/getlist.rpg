@@ -1,0 +1,48 @@
+        Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
+                ActGrp('rpmobile');
+
+        DCL-S MyResultSet SQLTYPE(RESULT_SET_LOCATOR);   
+
+        Dcl-DS StateInfo Qualified;
+            State  Char(48);
+            Abbrev Char(2);
+        End-DS;
+
+        // Dcl-Pr GetList ExtPgm('*libl/stlst');
+        // End-Pr;               
+
+        GetList();
+
+        Exec SQL 
+            ASSOCIATE RESULT SET LOCATORS
+            (:MyResultSet)
+            WITH PROCEDURE GetList;
+
+        EXEC SQL 
+            ALLOCATE c1 CURSOR
+            FOR RESULT SET :MyResultSet;
+
+        // EXEC SQL    
+        //     OPEN c1;
+
+        Dow SQLCode = 0;
+            EXEC SQL 
+                FETCH next from C1 into :StateInfo;
+        EndDo;
+
+        EXEC SQL    
+            CLOSE c1;                
+
+        *InLR = *On;
+        Return;
+
+        Dcl-Proc GetList;
+            Dcl-Pi *N;
+            End-Pi;            
+
+            Dcl-Pr GetListP ExtPgm('*libl/stlst');
+            End-Pr;               
+
+            CallP GetListP();                          
+        End-Proc;
+

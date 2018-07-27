@@ -1,0 +1,800 @@
+﻿/**
+ * Framework.css 
+ *
+ * This Cascading Stylesheet includes styles that are required by ASNA MobileRPG
+ * framework.
+ *
+ * As a rule, do not change the contents of this file.
+ *
+ * If minor changes to site styles are desired, ASNA strongly recommends changing
+ * the Theme.css Cascading Stylesheet, found in the same directory as this file.
+ *
+ * Should you desire to significantly change the branding of your MobileRPG project,
+ * ASNA recommends getting the SASS source file structure that will allow you to generate  
+ * Framework.css from https://github.com/ASNA/MobileRPG-Sass,  after you have changed the
+ * parameters described in the _config.scss file.
+ *
+ * To improve performance, you may want to use the "Minified" version of this Cascading 
+ * Stylesheet by getting the SASS source file structure from https://github.com/ASNA/MobileRPG-Sass, 
+ * that will allow you to generate the Framework.min.css, which you can link from your 
+ * MasterPage.master file, replacing the reference to Framework.css.
+ *
+ * To facilitate working with SASS, ASNA recommends installing the following Visual Studio Extensions:
+ *
+ *    Visual Studio 2015: Go to "Tools" menu and select "Extensions and Updates" option. 
+ *       On the dialog box that appears, click on the "online" extensions, and look for "Web Compiler". 
+ *       Once the "Web compiler" extension is installed, you can right-click on any of the Sass files in 
+ *       your website, and an explicit "Re-compile file" menu option will be available. 
+ *       Re-compiling a Sass file produces the CSS and min.CSS files
+ *
+ *    Visual Studio 2013: install the Microsoft "Web Essentials" package for Visual Studio 2013 from here: 
+ *       https://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361
+ *
+*/
+/* Selection
+    ========================================================================== */
+::-moz-selection {
+  background: #aaa;
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: #aaa;
+  color: white;
+  text-shadow: none;
+}
+
+/* Links
+    ========================================================================== */
+/* Remove gray background color from active links in IE 10 */
+a {
+  background: transparent;
+  color: #06c;
+}
+
+/* Typography
+    ========================================================================== */
+/* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* Address inconsistent and variable font size in all browsers. */
+small {
+  font-size: 80%;
+}
+
+/* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded
+       ========================================================================== */
+/* Correct overflow displayed oddly in IE 9. */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping
+       ========================================================================== */
+/* Address differences between Firefox and other browsers. */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/* Address odd `em`-unit font size rendering in all browsers. */
+code,
+kbd,
+pre,
+samp {
+  font-family: Consolas, monospace;
+  font-size: 1em;
+}
+
+/* Used by DdsPanel */
+fieldset {
+  border: 0;
+}
+
+/* Forms
+    ========================================================================== */
+/* Address `overflow` set to `hidden` in IE 8/9/10. */
+button {
+  overflow: visible;
+}
+
+/*
+        Address inconsistent `text-transform` inheritance for `button` and `select`.
+        All other form control elements do not inherit `text-transform` values.
+        Correct `button` style inheritance in Firefox, IE 8+, and Opera
+        Correct `select` style inheritance in Firefox.
+    */
+button,
+select {
+  text-transform: none;
+}
+
+/*
+        Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+        Correct inability to style clickable `input` types in iOS.
+        Improve usability and consistency of cursor style between image-type `input` and others.
+    */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+/* Re-set default cursor for disabled elements. */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/* Remove inner padding and border in Firefox 4+. */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet. */
+input {
+  line-height: normal;
+}
+
+/* ==========================================================================
+    Utility classes
+    ========================================================================== */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.no-vert-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+    Display files. Default styles for all the DdsXXXX controls.
+    ========================================================================== */
+/* When Page submits, cover all elements with a semi-transparent layer to avoid input */
+.SubmitWait {
+  background-color: LightGray;
+  opacity: 0.7;
+}
+
+/* If the response has not come within 2 seconds, show a Spinning Wheel */
+.SubmitWait_2Seconds {
+  background-image: url("../Images/SubmitWait.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ==========================================================================
+   Calendar for ddsDateTime
+   ========================================================================== */
+.CalendarTable {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: center;
+  cursor: default;
+  width: 283px;
+  height: 350px;
+}
+
+.CalendarTable thead tr.CalendarTopRow td {
+  height: 36px;
+}
+
+.CalendarTable thead tr.CalendarNavRow td, .CalendarTable thead tr:nth-of-type(3) td {
+  height: 42px;
+}
+
+.CalendarDateCell {
+  width: inherit;
+  cursor: pointer;
+}
+
+.CalendarSelDateCell {
+  width: inherit;
+  cursor: pointer;
+}
+
+.CalendarWeekDayCell {
+  width: 20px;
+}
+
+.CalendarExDateCell {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   ddsBar
+   ========================================================================== */
+.DdsBar {
+  width: 100%;
+  min-height: 2.8em;
+  z-index: 100;
+}
+
+.NavButton {
+  width: auto;
+  min-width: 4em;
+  /* Short text should have a min. width to be touchable */
+  height: 2.8em;
+  padding: 0 5px;
+  margin-top: 0.2em;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.NavButtonIcon {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.SignOnButton, .RightAlignButton {
+  float: right;
+}
+
+/* ==========================================================================
+   ddsCharField
+   ========================================================================== */
+.DdsCharField, .DdsCharField_OutputOnly, .DdsCharField_Right, .DdsCharField_Right_OutputOnly {
+  border: 1px solid;
+}
+
+.DdsCharField_OutputOnly {
+  border: none;
+}
+
+.DdsCharField_Right, .DdsCharField_Right_OutputOnly {
+  text-align: right;
+}
+
+.DdsCharField_Right_OutputOnly {
+  border: none;
+}
+
+/* ==========================================================================
+   ddsChart
+   ========================================================================== */
+.DdsChartPanel {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  border: 0.1em solid;
+}
+
+/* ==========================================================================
+   ddsConstant
+   ========================================================================== */
+.DdsConstant, .DdsConstant_Right {
+  border: none;
+  margin: 0;
+}
+
+.DdsConstant_Right {
+  text-align: right;
+}
+
+/* ==========================================================================
+   ddsDateField
+   ========================================================================== */
+.DdsDateField, .DdsDateField_OutputOnly, .DdsDateField_Right, .DdsDateField_Right_OutputOnly {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsDateField_OutputOnly {
+  border: none;
+}
+
+.DdsDateField_Right {
+  text-align: right;
+}
+
+.DdsDateField_Right_OutputOnly {
+  border: none;
+}
+
+.DdsDateFieldButton {
+  float: none !important;
+  height: 32px;
+  margin-left: -1px;
+}
+
+/*
+   DdsDateFieldNonAbsolute (with their _Right_XXX and _OutputOnly appended
+   class names) are used by the Toolbox icon, when dragging and dropping
+   to Web Form Designer onto a non-absolute containter.     
+   ========================================================================== */
+.DdsDateFieldNonAbsolute, .DdsDateFieldNonAbsolute_Error, .DdsDateFieldNonAbsolute_Right_Error, .DdsDateFieldNonAbsolute_OutputOnly, .DdsDateFieldNonAbsolute_Right, .DdsDateFieldNonAbsolute_Right_OutputOnly {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+  width: 70%;
+}
+
+.DdsDateFieldNonAbsolute_Error, .DdsDateFieldNonAbsolute_Right_Error {
+  color: white;
+  background-color: #c00;
+}
+
+.DdsDateFieldNonAbsolute_OutputOnly {
+  border: none;
+}
+
+.DdsDateFieldNonAbsolute_Right, .DdsDateFieldNonAbsolute_Right_OutputOnly {
+  text-align: right;
+}
+
+.DdsDateFieldNonAbsolute_Right_Error {
+  text-align: right;
+}
+
+.DdsDateFieldNonAbsolute_Right_OutputOnly {
+  border: none;
+}
+
+/* ==========================================================================
+   ddsDecDateField
+   ========================================================================== */
+.DdsDecDateField, .DdsDecDateField_Right, .DdsDecDateField_OutputOnly {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+}
+
+.DdsDecDateField_Right {
+  text-align: right;
+}
+
+.DdsDecDateField_OutputOnly {
+  border: none;
+}
+
+/*
+   DdsDecDateFieldNonAbsolute (with their _Right_XXX and _OutputOnly appended
+   class names) are used by the Toolbox icon, when dragging and dropping
+   to Web Form Designer onto a non-absolute containter.     
+   ========================================================================== */
+.DdsDecDateFieldNonAbsolute, .DdsDecDateFieldNonAbsolute_Error, .DdsDecDateFieldNonAbsolute_Right_Error, .DdsDecDateFieldNonAbsolute_OutputOnly, .DdsDecDateFieldNonAbsolute_Right, .DdsDecDateFieldNonAbsolute_Right_OutputOnly {
+  border: 1px solid;
+  border-color: #c0c0c0;
+  margin: 2px 0 0 0;
+  padding: 0;
+  width: 70%;
+}
+
+.DdsDecDateFieldNonAbsolute_Error, .DdsDecDateFieldNonAbsolute_Right_Error {
+  color: white;
+  background-color: #c00;
+}
+
+.DdsDecDateFieldNonAbsolute_OutputOnly {
+  border: none;
+}
+
+.DdsDecDateFieldNonAbsolute_Right, .DdsDecDateFieldNonAbsolute_Right_OutputOnly {
+  text-align: right;
+}
+
+.DdsDecDateFieldNonAbsolute_Right_Error {
+  text-align: right;
+}
+
+.DdsDecDateFieldNonAbsolute_Right_OutputOnly {
+  border: none;
+}
+
+/* ==========================================================================
+   ddsDecField
+   ========================================================================== */
+.DdsDecField, .DdsDecField_Error, .DdsDecField_Left_Error, .DdsDecField_OutputOnly, .DdsDecField_Left_OutputOnly, .DdsDecField_Left {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsDecField_OutputOnly, .DdsDecField_Left_OutputOnly {
+  border: 0;
+}
+
+.DdsDecField_Left {
+  text-align: left;
+}
+
+.DdsDecField_Left_Error {
+  text-align: left;
+}
+
+.DdsDecField_Left_OutputOnly {
+  text-align: left;
+  border: 0;
+}
+
+/* ==========================================================================
+   ddsImage
+   ========================================================================== */
+.DdsImageUpload {
+  height: 2.5em;
+  border: 1px solid;
+  float: right;
+}
+
+.DdsImageUpload:disabled {
+  border: 1px solid;
+  float: right;
+}
+
+.DdsImage img {
+  background-image: url("../Images/SubmitWait.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.DdsImage .DdsImageSwipeShowNavBars {
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.DdsImage .DdsImageSwipeShowNavBars.RightBar {
+  background-image: url("../Images/circle-arrow-right.png");
+}
+
+.DdsImage .DdsImageSwipeShowNavBars.LeftBar {
+  background-image: url("../Images/circle-arrow-left.png");
+}
+
+.DdsImage div[data-ddsImage-tag] {
+  position: absolute;
+  bottom: 10px;
+  width: 50px;
+  left: 50%;
+  margin-left: -25px;
+  text-align: center;
+  padding: 3px;
+}
+
+.DdsImageFullScreen .CloseButton {
+  background-image: url("../Images/circle-x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 46px;
+  height: 46px;
+}
+
+.DdsImageFullScreen .DdsImageSwipeShowNavBars {
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.DdsImageFullScreen .DdsImageSwipeShowNavBars.RightBar {
+  background-image: url("../Images/circle-arrow-right.png");
+}
+
+.DdsImageFullScreen .DdsImageSwipeShowNavBars.LeftBar {
+  background-image: url("../Images/circle-arrow-left.png");
+}
+
+.DdsImageFullScreen div[data-ddsImage-tag] {
+  position: absolute;
+  bottom: 10px;
+  width: 50px;
+  left: 50%;
+  margin-left: 25px;
+  text-align: center;
+  padding: 3px;
+}
+
+/* ==========================================================================
+   ddsList
+   ========================================================================== */
+.DdsList {
+  position: relative;
+  left: 0;
+}
+
+.DdsListList {
+  position: relative;
+  left: 2%;
+  padding: 2px;
+  width: 96%;
+}
+
+.DdsListList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.DdsListIcon {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.DdsListChevron {
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   ddsPanel
+   ========================================================================== */
+fieldset {
+  border: 0;
+  font-size: 1.2em;
+}
+
+.DdsPanel {
+  padding: 2px;
+  border: 2px solid;
+}
+
+.PanelTitle, .PanelTitle_OutputOnly {
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 2.2em;
+  text-align: center;
+}
+
+/* ==========================================================================
+   ddsRecord
+   ========================================================================== */
+.DdsRecord {
+  width: 100%;
+}
+
+/* ==========================================================================
+   ddsSignature
+   ========================================================================== */
+.DdsSignature {
+  margin-left: 2%;
+  width: 95%;
+  border: 1px dotted;
+}
+
+.DdsSignLink {
+  right: 2%;
+}
+
+.DdsSignEditor, .DdsSignEditorTitle {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+.DdsSignEditorTitle {
+  border: none;
+  padding: 0;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.DdsSignCancelButton, .DdsSignDoneButton, .DdsSignEraseButton {
+  margin: 1em 1em 1em 1em;
+  padding: 0;
+  border: none;
+}
+
+/* ==========================================================================
+   ddsSwitch
+   ========================================================================== */
+.ToggleSwitchLabel {
+  display: inline-block;
+  height: 2em;
+  width: 7em;
+}
+
+.ToggleSwitch {
+  border: 0.1em solid;
+  display: inline-block;
+  width: 5em;
+  height: 2em;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ToggleSwitch-wrapper > * {
+  display: block;
+  float: left;
+  height: 2em;
+  line-height: 2em;
+}
+
+.ToggleSwitch > .ToggleSwitch-wrapper {
+  display: block;
+  width: 8em;
+  height: 2em;
+  overflow: hidden;
+  filter: dropshadow(color=#000000, offx=0, offy=-1);
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-on {
+  width: 3em;
+  padding-left: 1em;
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-off {
+  width: 3em;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.ToggleSwitch-wrapper > .ToggleSwitch-handle {
+  width: 2em;
+  margin-left: -5em;
+  border: 0.1em solid;
+  box-sizing: border-box;
+}
+
+.ToggleSwitchSwipeRight {
+  margin-left: 0;
+}
+
+.ToggleSwitchSwipeLeft {
+  margin-left: -3em;
+}
+
+.ToggleSwitchRenderAsCheckbox {
+  display: inline-block;
+  width: 5em;
+  height: 2em;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ToggleSwitchRenderAsCheckboxWrapper {
+  display: block;
+  float: left;
+  height: 2em;
+  line-height: 2em;
+}
+
+/* ==========================================================================
+   ddsTable
+   ========================================================================== */
+.DdsTable table {
+  width: 100%;
+}
+
+/* ==========================================================================
+   ddsTimeField
+   ========================================================================== */
+.DdsTimeField, .DdsTimeField_OutputOnly, .DdsTimeField_Link {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsTimeField_OutputOnly {
+  border: none;
+}
+
+.DdsTimeField_Link {
+  border: none;
+}
+
+/* ==========================================================================
+   ddsTimestampField
+   ========================================================================== */
+.DdsTimestampField, .DdsTimestampField_OutputOnly, .DdsTimestampField_Link {
+  border: 1px solid;
+  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.DdsTimestampField_OutputOnly {
+  border: none;
+}
+
+.DdsTimestampField_Link {
+  border: none;
+}
+
+/* ==========================================================================
+   DDS Window Records
+   ========================================================================== */
+.DdsInlinePopUpBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+}
+
+.DdsInlinePopUpTable {
+  position: absolute;
+  background-color: white;
+  overflow: hidden;
+  z-index: 100;
+  border-collapse: collapse;
+}
+
+.DdsInlinePopUpContent {
+  width: 100%;
+}
+
+.DdsInlinePopUpTitle {
+  padding: 4px 10px;
+  height: 21px;
+}
+
+/* ==========================================================================
+   DdsDecRange
+   ========================================================================== */
+.RangeNumericValue {
+  text-align: center;
+}
+
+.RangeStepButton {
+  margin: 0px;
+  width: 34px;
+  height: 34px;
+  color: white;
+  background: #2baee2;
+  border: 0px;
+  padding: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
