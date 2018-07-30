@@ -82,10 +82,10 @@ Before the record format containing the DDSList dropdown is displayed, it needs 
 
 Declare a data structure for each dropdown item and a corresponding data array of this data structure.
 
-	Dcl-DS StateInfo Qualified;
-		State Char(48);
-		Abbrev Char(2);
-	End-DS;
+    Dcl-DS StateInfo Qualified;
+        State Char(48);
+        Abbrev Char(2);
+    End-DS;
 	
 	Dcl-DS States LikeDS(StateInfo) Dim(100);
 <small>Figure 2a. Declaring a data structure and a data structure array for dropdown data.</small>
