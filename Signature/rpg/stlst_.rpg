@@ -1,0 +1,29 @@
+        Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
+                ActGrp('rpmobile');
+
+        Dcl-DS States LikeDS(StateInfo) Dim(100);
+
+        Dcl-DS StateInfo Qualified;
+            State  Char(48);
+            Abbrev Char(2);
+        End-DS;
+
+        GetStates();
+
+        *InLR = *On;
+        Return;
+
+        Dcl-Proc GetStates;
+            Dcl-Pi *N Int(10);
+            End-Pi;            
+
+            Dcl-S RowsReturned Int(10);
+
+            Dcl-Pr GetStatesList ExtPgm('STLST');
+                *N    LikeDS(StateInfo) Dim(100);
+                *N    int(10);
+            End-Pr;               
+
+            CallP GetStatesList(States : RowsReturned);
+            Return RowsReturned;
+        End-Proc;

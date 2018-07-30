@@ -1,13 +1,43 @@
         Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
                 ActGrp('rpmobile');
 
+        Dcl-Pi *N;
+            States          LikeDS(StateInfo) Dim(100); 
+            RowsReturned    int(10);
+        End-Pi;        
+
+        //Dcl-DS States LikeDS(StateInfo) Dim(100);
+
+        Dcl-DS StateInfo Qualified;
+            State  Char(48);
+            Abbrev Char(2);
+        End-DS;
+
+        Dcl-S x Int(10);
+
         EXEC SQL
             SET OPTION NAMING = *SYS,
             COMMIT = *NONE;
 
-        Exec SQL
-            DECLARE C1 CURSOR FOR
-            Select state, abbrev from examples/states
-            order by states;
+        EXEC SQL 
+            DECLARE c1 CURSOR FOR 
+                SELECT state, abbrev 
+                FROM Examples/States 
+                Order By State;            
+
+        EXEC SQL 
+            OPEN c1;
+
+        EXEC SQL 
+            FETCH c1 FOR 100 ROWS
+            INTO :States;
+
+        EXEC SQL 
+            GET DIAGNOSTICS :RowsReturned = ROW_COUNT;
+
+        EXEC SQL 
+            Close C1;  
+
+        x = 5;                        
 
         Return;            

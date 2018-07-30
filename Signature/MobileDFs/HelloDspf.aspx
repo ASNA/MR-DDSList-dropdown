@@ -40,15 +40,37 @@
                 <mdf:DdsButton ID="DdsButton1" ButtonStyle="Icon" runat="server" CssClass="NavButtonIcon" AidKey="F3" IconID="signout" />
             </mdf:DdsBarSegment>
             <mdf:DdsBarSegment ID="DdsBarSegment2" runat="server" Alignment="Center">
-                <span class="PanelTitle" >Mobile RPG App</span>
+                <span class="PanelTitle" >Mobile RPG Dropdown Example</span>
             </mdf:DdsBarSegment>
 
             <mdf:DdsBarSegment ID="rightFiller" runat="server" Alignment="Right">
             </mdf:DdsBarSegment>
         </mdf:DdsBar>
 
-        <mdf:DdsList ID="DdsList1" runat="server" ClearIndicator="99" CssClass="DdsList" CssClassChevron="DdsListChevron" CssClassDetail="DdsListDetail" CssClassIcon="DdsListIcon" CssClassImage="DdsListImage" CssClassList="DdsListList" CssClassRow="DdsListRow" ListType="Dropdown" SubfileControlName="sbfDDCtl" SubfileName="sbfDD" TextField="DDText" TextFieldLength="24" ValueField="DDValue" ValueFieldLength="2" SelectedField="DDSel" SelectedItemField="DDCurrVal" />
+        <br />
 
+        Select a state<br />
+        <br />
+
+<mdf:DdsList ID="DdsList1" runat="server" 
+    CssClass="DdsList" CssClassChevron="DdsListChevron" 
+    CssClassDetail="DdsListDetail" CssClassIcon="DdsListIcon" 
+    CssClassImage="DdsListImage" CssClassList="DdsListList" 
+    CssClassRow="DdsListRow" 
+    ListType="Dropdown" 
+    ClearIndicator="99" 
+    SelectedField="DDSel" 
+    SelectedItemField="DDCurrVal" 
+    SubfileName="sbfDD" 
+    SubfileControlName="sbfDDCtl" 
+    TextField="DDText" 
+    TextFieldLength="24" 
+    ValueField="DDValue" 
+    ValueFieldLength="2" 
+/>
+        <br />
+        <br />
+        Selected dropdown value is:
         <br />
         <br />
         <mdf:DdsCharField ID="DdsCharField1" runat="server" Alias="State" AutoPostBack="True" CssClass="DdsCharField" />

@@ -9,6 +9,6 @@ public partial class HelloDspf : ASNA.Monarch.WebDspF.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        this.Title = "Dropdown example";
     }
 }

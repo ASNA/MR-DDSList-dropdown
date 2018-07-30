@@ -1,15 +1,12 @@
         Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
                 ActGrp('rpmobile');
 
-        DCL-S MyResultSet SQLTYPE(RESULT_SET_LOCATOR);   
+        Dcl-DS States LikeDS(RowDef) Dim(100);
 
         Dcl-DS StateInfo Qualified;
             State  Char(48);
             Abbrev Char(2);
         End-DS;
-
-        // Dcl-Pr GetList ExtPgm('*libl/stlst');
-        // End-Pr;               
 
         GetList();
 

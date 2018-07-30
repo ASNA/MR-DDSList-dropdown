@@ -8,6 +8,13 @@
 
         Dcl-S SbfRRN   Zoned(4:0);
 
+        Dcl-DS States LikeDS(StateInfo) Dim(100);
+
+        Dcl-DS StateInfo Qualified;
+            State  Char(48);
+            Abbrev Char(2);
+        End-DS;
+
         Dcl-DS Action Qualified;
             Exit           Char(1) Inz(F03);
             Cancel         Char(1) Inz(F02);
@@ -20,10 +27,12 @@
             OK             Char(1) Inz(F08);
             Display        Char(1) Inz(F09);
             Remove         Char(1) Inz(F10);
-        End-DS;
+        End-DS;                        
 
-        LoadDDLst();
-        DDCurrVal = 'IL';
+        LoadStatesList();
+        // Set DDCurrVal to start the list at a specific
+        // list item.
+        //DDCurrVal = 'IL';
         ExFmt HOMEMENU;
 
         Dow ActionRequest <> Action.Exit;
@@ -31,11 +40,14 @@
                 When CurrentFormat = 'HOMEMENU';
                     Select; 
                         When ActionRequest = Action.OK;
+                            // Selected value of states dropdown
+                            // is in DDCurrVal.
+                            // Assign it to a visible field.
                             State = DDCurrVal;
-                            LoadDDLst();
+                            LoadStatesList();
                             ExFmt HOMEMENU;
                         Other;
-                            LoadDDLst();
+                            LoadStatesList();
                             ExFmt HOMEMENU;                    
                     EndSL;                            
             EndSl;
@@ -44,42 +56,82 @@
         *INLR = *ON;
         Return;
 
-        Dcl-Proc LoadDDLst;
+
+        Dcl-Proc LoadStatesList;
+            Dcl-Pi *N;
+            End-Pi;            
+
+            Dcl-S RowsReturned Int(10);
+            Dcl-S Index Int(10);
+
+            RowsReturned = GetStates();
+
             *IN99 = *On;
             Write SBFDDCTL;
             SbfRRN = 0;
 
-            DDText = 'Alabama';
-            DDValue = 'AL';
-            DDSel = '0';
-            SbfRRN = SbfRRN + 1;
-            Write SbfDD;
-
-            DDText = 'Colorado';
-            DDValue = 'CO';
-            DDSel = '0';
-            SbfRRN = SbfRRN + 1;
-            Write SbfDD;
-
-            DDText = 'Illinois';
-            DDValue = 'IL';
-            DDSel = '1';
-            SbfRRN = SbfRRN + 1;
-            Write SbfDD;
-
-            DDText = 'Georgia';
-            DDValue = 'GA';
-            DDSel = '0';
-            SbfRRN = SbfRRN + 1;
-            Write SbfDD;
-
-            DDText = 'Nevada';
-            DDValue = 'NV';
-            DDSel = '0';
-            SbfRRN = SbfRRN + 1;
-            Write SbfDD;
+            For Index=1 To RowsReturned;
+                DDText = States(Index).State;
+                DDValue = States(Index).Abbrev;
+                DDSel = '0';
+                SbfRRN = SbfRRN + 1;
+                Write SbfDD;
+            EndFor;
 
             *In99 = *Off;
             Write SBFDDCTL;
         End-Proc;
 
+        Dcl-Proc GetStates;
+            Dcl-Pi *N Int(10);
+            End-Pi;            
+
+            Dcl-S RowsReturned Int(10);
+
+            Dcl-Pr GetStatesList ExtPgm('STLST');
+                *N    LikeDS(StateInfo) Dim(100);
+                *N    int(10);
+            End-Pr;               
+
+            CallP GetStatesList(States : RowsReturned);
+            Return RowsReturned;
+        End-Proc;
+
+        // Dcl-Proc LoadStatesList;
+        //     *IN99 = *On;
+        //     Write SBFDDCTL;
+        //     SbfRRN = 0;
+
+        //     DDText = 'Alabama';
+        //     DDValue = 'AL';
+        //     DDSel = '0';
+        //     SbfRRN = SbfRRN + 1;
+        //     Write SbfDD;
+
+        //     DDText = 'Colorado';
+        //     DDValue = 'CO';
+        //     DDSel = '0';
+        //     SbfRRN = SbfRRN + 1;
+        //     Write SbfDD;
+
+        //     DDText = 'Illinois';
+        //     DDValue = 'IL';
+        //     DDSel = '0';
+        //     SbfRRN = SbfRRN + 1;
+        //     Write SbfDD;
+
+        //     DDText = 'Georgia';
+        //     DDValue = 'GA';
+        //     DDSel = '0';
+        //     SbfRRN = SbfRRN + 1;
+        //     Write SbfDD;
+
+        //     DDText = 'Nevada';
+        //     DDValue = 'NV';
+        //     DDSel = '0';
+        //     SbfRRN = SbfRRN + 1;
+        //     Write SbfDD;
+
+        //     *In99 = *Off;
+        //     Write SBFDDCTL;
+        // End-Proc;
