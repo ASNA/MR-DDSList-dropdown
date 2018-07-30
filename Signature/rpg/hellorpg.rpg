@@ -56,7 +56,6 @@
         *INLR = *ON;
         Return;
 
-
         Dcl-Proc LoadStatesList;
             Dcl-Pi *N;
             End-Pi;            
@@ -64,7 +63,8 @@
             Dcl-S RowsReturned Int(10);
             Dcl-S Index Int(10);
 
-            RowsReturned = GetStates();
+            //RowsReturned = GetStates();
+            RowsReturned = GetStatesSimple();
 
             *IN99 = *On;
             Write SBFDDCTL;
@@ -97,41 +97,31 @@
             Return RowsReturned;
         End-Proc;
 
-        // Dcl-Proc LoadStatesList;
-        //     *IN99 = *On;
-        //     Write SBFDDCTL;
-        //     SbfRRN = 0;
+        Dcl-Proc GetStatesSimple;
+            Dcl-Pi *N Int(10);
+            End-Pi;            
 
-        //     DDText = 'Alabama';
-        //     DDValue = 'AL';
-        //     DDSel = '0';
-        //     SbfRRN = SbfRRN + 1;
-        //     Write SbfDD;
+            Dcl-S Index Int(10);
+            
+            Index = 1;
+            States(Index).State = 'Alabama';
+            States(Index).Abbrev = 'AL';    
 
-        //     DDText = 'Colorado';
-        //     DDValue = 'CO';
-        //     DDSel = '0';
-        //     SbfRRN = SbfRRN + 1;
-        //     Write SbfDD;
+            Index = 2;
+            States(Index).State = 'Colorado';
+            States(Index).Abbrev = 'CO';    
 
-        //     DDText = 'Illinois';
-        //     DDValue = 'IL';
-        //     DDSel = '0';
-        //     SbfRRN = SbfRRN + 1;
-        //     Write SbfDD;
+            Index = 3;
+            States(Index).State = 'Illinois';
+            States(Index).Abbrev = 'IL';    
 
-        //     DDText = 'Georgia';
-        //     DDValue = 'GA';
-        //     DDSel = '0';
-        //     SbfRRN = SbfRRN + 1;
-        //     Write SbfDD;
+            Index = 4;
+            States(Index).State = 'Georgia';
+            States(Index).Abbrev = 'NV';    
 
-        //     DDText = 'Nevada';
-        //     DDValue = 'NV';
-        //     DDSel = '0';
-        //     SbfRRN = SbfRRN + 1;
-        //     Write SbfDD;
+            Index = 5;
+            States(Index).State = 'Nevada';
+            States(Index).Abbrev = 'NV';    
 
-        //     *In99 = *Off;
-        //     Write SBFDDCTL;
-        // End-Proc;
+            Return 5;
+        End-Proc;         

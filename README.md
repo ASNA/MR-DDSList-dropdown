@@ -73,3 +73,140 @@ The DDRList's `SelectField` property produces the DDSEL field. For most subfile-
     A  99                                  SFLCLR
     A                                      OVERLAY
 <small>Figure 1e. How to save the DDS source when exporting a Mobile RPG display file to the IBM i</small>
+
+
+#### How to load the DDSList subfile for dropdown use
+
+Before the record format containing the DDSList dropdown is displayed, it needs to be populated with dropdown data. The code below in Figure 2a shows a way to do this. 
+
+Declare a data structure for each dropdown item and a corresponding data array of this data structure.
+
+	Dcl-DS StateInfo Qualified;
+		State Char(48);
+		Abbrev Char(2);
+	End-DS;
+	
+	Dcl-DS States LikeDS(StateInfo) Dim(100);
+<small>Figure 2a. Declaring a data structure and a data structure array for dropdown data.</small>
+
+Populate the data structure array as shown below in Figure 2b. This simple example hardcodes five states. Later we'll take a look at populating the data structure array from a data file. 
+
+	Dcl-Proc GetStates;
+	    Dcl-Pi *N Int(10);
+	    End-Pi;            
+
+	    Dcl-S Index Int(10);
+	    
+	    Index = 1;
+	    States(Index).State = 'Alabama';
+	    States(Index).Abbrev = 'AL';    
+
+	    Index = 2;
+	    States(Index).State = 'Colorado';
+	    States(Index).Abbrev = 'CO';    
+
+	    Index = 3;
+	    States(Index).State = 'Illinois';
+	    States(Index).Abbrev = 'IL';    
+
+	    Index = 4;
+	    States(Index).State = 'Georgia';
+	    States(Index).Abbrev = 'NV';    
+
+	    Index = 5;
+	    States(Index).State = 'Nevada';
+	    States(Index).Abbrev = 'NV';    
+
+	    Return 5;
+	End-Proc;         
+<small>Figure 2b. Populating the data structure array with hard coded data.</small>
+
+Populate the DDSList's subfile with the data structure array.
+
+	Dcl-Proc LoadStatesList;
+	    Dcl-Pi *N;
+	    End-Pi;            
+
+	    Dcl-S RowsReturned Int(10);
+	    Dcl-S Index Int(10);
+
+	    RowsReturned = GetStates();
+
+	    *IN99 = *On;
+	    Write SBFDDCTL;
+	    SbfRRN = 0;
+
+	    For Index=1 To RowsReturned;
+	        DDText = States(Index).State;
+	        DDValue = States(Index).Abbrev;
+	        DDSel = '0';
+	        SbfRRN = SbfRRN + 1;
+	        Write SbfDD;
+	    EndFor;
+
+	    *In99 = *Off;
+	    Write SBFDDCTL;
+	End-Proc;
+<small>Figure 2c. Populating the DDSList's subfile with the data structure array.</small>
+
+
+
+
+#### Call an RPG program to populate the StateInfo data structure array
+
+	Dcl-Proc GetStates;
+	    Dcl-Pi *N Int(10);
+	    End-Pi;            
+
+	    Dcl-S RowsReturned Int(10);
+
+	    Dcl-Pr GetStatesList ExtPgm('STLST');
+	        *N    LikeDS(StateInfo) Dim(100);
+	        *N    int(10);
+	    End-Pr;               
+
+	    CallP GetStatesList(States : RowsReturned);
+	    Return RowsReturned;
+	End-Proc;
+
+#### ILE RPG program STLST	
+
+	Ctl-Opt Option(*srcstmt) Dftactgrp(*No) 
+			ActGrp('rpmobile');
+
+	Dcl-Pi *N;
+		States          LikeDS(StateInfo) Dim(100); 
+		RowsReturned    int(10);
+	End-Pi;        
+
+	Dcl-DS StateInfo Qualified;
+		State  Char(48);
+		Abbrev Char(2);
+	End-DS;
+
+	Dcl-S x Int(10);
+
+	EXEC SQL
+		SET OPTION NAMING = *SYS,
+		COMMIT = *NONE;
+
+	EXEC SQL 
+		DECLARE c1 CURSOR FOR 
+			SELECT state, abbrev 
+			FROM Examples/States 
+			Order By State;            
+
+	EXEC SQL 
+		OPEN c1;
+
+	EXEC SQL 
+		FETCH c1 FOR 100 ROWS
+		INTO :States;
+
+	EXEC SQL 
+		GET DIAGNOSTICS :RowsReturned = ROW_COUNT;
+
+	EXEC SQL 
+		Close C1;  
+
+	Return;            

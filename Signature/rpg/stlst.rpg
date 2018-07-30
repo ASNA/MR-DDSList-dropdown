@@ -6,8 +6,6 @@
             RowsReturned    int(10);
         End-Pi;        
 
-        //Dcl-DS States LikeDS(StateInfo) Dim(100);
-
         Dcl-DS StateInfo Qualified;
             State  Char(48);
             Abbrev Char(2);
@@ -37,7 +35,5 @@
 
         EXEC SQL 
             Close C1;  
-
-        x = 5;                        
 
         Return;            
