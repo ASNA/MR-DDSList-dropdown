@@ -10,6 +10,7 @@ The DDSList is a frequently-used control for Mobile RPG.  It has four distinct "
 This article discussing how to use the DDSList control to provide a dropdown element for a Mobile RPG record format. When rendered this way, the generated HTML is a `select` tag with `option` tags for each item in the dropdown list. This article's example code is shown below in Figure 1a. When the `OK` button is clicked the selected value of the dropdown is shown in the textbox just above the `OK` button.
 
 ![](http://asna.com/filebin/marketing/article-figures/mobile-rp-dropdown-example.png)
+
 <small>Figure 1a. The DDSList rendered as a dropdown (select tag)</small>
 
 In every case, the rendered element is populated with columns in an RPG subfile.  The properties of the DDSList specify the field names and other subfile attributes. The list in Figure 1b below shows the DDSList properties, and their values, used in this example to render the dropdown.
