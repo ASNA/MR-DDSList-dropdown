@@ -1,8 +1,8 @@
         Ctl-Opt Option(*srcstmt) Dftactgrp(*No) ActGrp('rpmobile');
 
         Dcl-F HelloDspf                  WORKSTN Infds(infds)
-                                         Handler('MOBILERPG')
-                                         SFile(SBFDD:SbfRRN);
+                                            Handler('MOBILERPG')
+                                            SFile(SBFDD:SbfRRN);
 
         /COPY RPMRDATA/QRPGLESRC,KEYMAPF
 
